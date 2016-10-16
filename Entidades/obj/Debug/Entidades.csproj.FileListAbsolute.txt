@@ -1,0 +1,5 @@
+c:\users\dani_\documents\visual studio 2015\Projects\ProyectoPAV2\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+c:\users\dani_\documents\visual studio 2015\Projects\ProyectoPAV2\Entidades\bin\Debug\Entidades.dll
+c:\users\dani_\documents\visual studio 2015\Projects\ProyectoPAV2\Entidades\bin\Debug\Entidades.pdb
+c:\users\dani_\documents\visual studio 2015\Projects\ProyectoPAV2\Entidades\obj\Debug\Entidades.dll
+c:\users\dani_\documents\visual studio 2015\Projects\ProyectoPAV2\Entidades\obj\Debug\Entidades.pdb

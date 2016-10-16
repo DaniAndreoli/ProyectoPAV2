@@ -1,0 +1,7 @@
+c:\users\dani_\documents\visual studio 2015\Projects\ProyectoPAV2\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Dani_\documents\visual studio 2015\Projects\ProyectoPAV2\DAL\bin\Debug\DAL.dll
+C:\Users\Dani_\documents\visual studio 2015\Projects\ProyectoPAV2\DAL\bin\Debug\DAL.pdb
+C:\Users\Dani_\documents\visual studio 2015\Projects\ProyectoPAV2\DAL\bin\Debug\Entidades.dll
+C:\Users\Dani_\documents\visual studio 2015\Projects\ProyectoPAV2\DAL\bin\Debug\Entidades.pdb
+C:\Users\Dani_\documents\visual studio 2015\Projects\ProyectoPAV2\DAL\obj\Debug\DAL.dll
+C:\Users\Dani_\documents\visual studio 2015\Projects\ProyectoPAV2\DAL\obj\Debug\DAL.pdb
