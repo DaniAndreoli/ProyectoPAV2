@@ -118,6 +118,18 @@ namespace ProyectoPAV2.DAL
         }
 
         /// <summary>
+        /// Metodo que permite obtener el objeto de la clase EstadoSolicitud por idEstado
+        /// </summary>
+        /// <param name="idEstado"></param>
+        /// <returns>Objeto EstadoSolicitud</returns>
+        public static EstadoSolicitud getEstadoSolicitud(int idEstado)
+        {
+            EstadoSolicitudDAL estadoSolicitudDAL = new EstadoSolicitudDAL();
+
+            return estadoSolicitudDAL.getEstadoPorID(idEstado);
+        }
+
+        /// <summary>
         /// Metodo que permite obtener una coleccion de todas las franquicias pertenecientes a un cliente
         /// </summary>
         /// <param name="idCliente"></param>
@@ -139,6 +151,18 @@ namespace ProyectoPAV2.DAL
             EstadoPedidoDAL estadoPedidoDAL = new EstadoPedidoDAL();
 
             return estadoPedidoDAL.getEstadoPorID(idEstado);
+        }
+
+        /// <summary>
+        /// Metodo que permite obtener el objeto de la clase Cliente especificando un id
+        /// </summary>
+        /// <param name="idCliente"></param>
+        /// <returns></returns>
+        public static Cliente getClientePorID(int idCliente)
+        {
+            ClienteDAL clienteDAL = new ClienteDAL();
+
+            return clienteDAL.getClientePorID(idCliente);
         }
 
         /// <summary>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoPAV2.Entidades
 {
-    class SolicitudesFranquiciaCollection : List<SolicitudFranquicia>
+    public class SolicitudesFranquiciaCollection : List<SolicitudFranquicia>
     {
 
     }

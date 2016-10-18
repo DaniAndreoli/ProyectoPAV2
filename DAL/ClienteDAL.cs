@@ -161,6 +161,8 @@ namespace ProyectoPAV2.DAL
         /// <returns>Valor boolean que indica si la operacion fue realizada con exito o no</returns>
         public bool eliminarCliente(int idCliente)
         {
+            bool resultado = false;
+
             SqlCommand cmd = new SqlCommand("PACK_CLIENTES.PR_CLIENTES_B", getConexion());
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -171,13 +173,16 @@ namespace ProyectoPAV2.DAL
                 cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
 
-                return true;
+                resultado = true;
             }
             catch (Exception e)
             {
                 cmd.Connection.Close();
                 throw e;
+                
             }
+
+            return resultado;
         }
 
         /// <summary>
@@ -187,12 +192,14 @@ namespace ProyectoPAV2.DAL
         /// <returns></returns>
         public bool modificarCliente(Cliente cliente)
         {
+            bool resultado = false;
+
             SqlCommand cmd = new SqlCommand("PACK_CLIENTES.PR_CLIENTES_M");
             cmd.CommandType = CommandType.StoredProcedure;
 
             try
-            {
-                cmd.Parameters.AddWithValue("@id_cliente", cliente.Nombre);
+            { 
+                cmd.Parameters.AddWithValue("@id_cliente", cliente.IdCliente);
                 cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
                 cmd.Parameters.AddWithValue("@apellido", cliente.Apellido);
                 cmd.Parameters.AddWithValue("@nro_documento", cliente.NroDocumento);
@@ -209,12 +216,13 @@ namespace ProyectoPAV2.DAL
                 DomicilioDAL domicilioDAL = new DomicilioDAL();
                 domicilioDAL.modificarDomicilio(cliente.Domicilio);
 
+                //Modificamos el registro Cliente
                 cmd.ExecuteNonQuery();
 
                 cmd.Transaction.Commit();
                 cmd.Connection.Close();
 
-                return true;
+                resultado = true;
             }
             catch (Exception e)
             {
@@ -222,6 +230,8 @@ namespace ProyectoPAV2.DAL
                 cmd.Connection.Close();
                 throw e;
             }
+
+            return resultado;
         }
 
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data;
+
 namespace ProyectoPAV2.Entidades
 {
     public class TiposDocumentoCollection : List<TipoDocumento>
@@ -29,6 +31,5 @@ namespace ProyectoPAV2.Entidades
 
             return objTipoDocumento;
         }
-
     }
 }

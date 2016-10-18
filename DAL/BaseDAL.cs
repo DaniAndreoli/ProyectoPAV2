@@ -23,7 +23,7 @@ namespace ProyectoPAV2.DAL
         protected SqlConnection getConexion()
         {
             // TODO: Poner la cadena de conexión en un archivo de configuracion
-            string connectionString = @"Data Source=localhost;Initial Catalog=tickets_utn;Integrated Security=True";
+            string connectionString = @"Data Source=DESKTOP-GP03IIR\SQLEXPRESS;Initial Catalog=ProyectoPAV2_DB;Integrated Security=True";
 
             if (this.conexion != null)
             {

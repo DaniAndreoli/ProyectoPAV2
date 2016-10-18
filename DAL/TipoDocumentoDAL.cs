@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data;
 using System.Data.SqlClient;
+
 
 using ProyectoPAV2.Entidades;
 
 namespace ProyectoPAV2.DAL
 {
-    class TipoDocumentoDAL : BaseDAL
+    public class TipoDocumentoDAL : BaseDAL
     {
         /// <summary>
         /// Permite obtener una coleccion con todos los registros de  Tipos de Documento de Base de Datos
@@ -18,24 +20,33 @@ namespace ProyectoPAV2.DAL
         /// <returns>Coleccion Generics de objetos TipoDocumento</returns>
         public TiposDocumentoCollection getTiposDocumento()
         {
-            SqlCommand cmd = new SqlCommand("PACK_TIPOS_DOCUMENTO.PR_TIPO_DOCUMENTO_C", getConexion());
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM T_TIPOS_DOCUMENTO", getConexion());
+            cmd.CommandType = System.Data.CommandType.Text;
 
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            TiposDocumentoCollection tiposDocumento = new TiposDocumentoCollection();
-            while (dr.Read())
+            try
             {
-                TipoDocumento tipoDocumento = new TipoDocumento(
-                    dr.GetInt16(0),
-                    dr.GetString(1));
+                SqlDataReader dr = cmd.ExecuteReader();
 
-                tiposDocumento.Add(tipoDocumento);
+                TiposDocumentoCollection tiposDocumento = new TiposDocumentoCollection();
+                while (dr.Read())
+                {
+                    TipoDocumento tipoDocumento = new TipoDocumento(
+                        dr.GetInt32(0),
+                        dr.GetString(1));
+
+                    tiposDocumento.Add(tipoDocumento);
+                }
+
+                cmd.Connection.Close();
+
+                return tiposDocumento;
             }
-
-            cmd.Connection.Close();
-
-            return tiposDocumento;
+            catch (Exception e)
+            {
+                cmd.Connection.Close();
+                throw e;
+            }
+            
         }
         
         /// <summary>
