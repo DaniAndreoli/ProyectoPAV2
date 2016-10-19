@@ -13,10 +13,10 @@ namespace ProyectoPAV2.AppWeb.SolicitudesFranquicia
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ddlTiposDocumento.DataSource = TipoDocumentoBL.getTiposDocumento();
+            /*ddlTiposDocumento.DataSource = TipoDocumentoBL.getTiposDocumento();
             ddlTiposDocumento.DataValueField = "id_tipo_documento";
             ddlTiposDocumento.DataTextField = "n_tipo_documento";
-            ddlTiposDocumento.DataBind();
+            ddlTiposDocumento.DataBind();*/
         }
     }
 }
