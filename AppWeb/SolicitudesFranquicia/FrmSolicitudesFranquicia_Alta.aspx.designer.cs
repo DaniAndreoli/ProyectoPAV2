@@ -11,14 +11,5 @@ namespace ProyectoPAV2.AppWeb.SolicitudesFranquicia {
     
     
     public partial class FrmSolicitudesFranquicia_Alta {
-        
-        /// <summary>
-        /// ddlTiposDocumento control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTiposDocumento;
     }
 }

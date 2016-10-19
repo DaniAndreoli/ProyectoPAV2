@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoPAV2.Entidades
 {
-    class TiposProductoCollection : List<TipoProducto>
+    public class TiposProductoCollection : List<TipoProducto>
     {
         /// <summary>
         /// Retorna el objeto de la clase TipoProducto especificado en el parametro de entrada

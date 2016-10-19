@@ -5,26 +5,90 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
+    <%-- ****************************************BIENVENIDOS!!! Esta es la MasterPage de la aplicacion********************************************
+    Trataremos de explicar mediante comentarios lo que acontece en cada seccion del codigo HTML de las interfaces
+        
+    -En este caso presentamos la pagina que actuara como pagina maestra de todos los formularios web que se encuentren en la aplicacion
+    -Desde esta pagina se utilizara control de acceso y permisos de usuarios,w redireccionando a los usuarios no registrados al sitio inicial --%>
+    
+    
+    <%-- Bootstrap Responsive --%>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" /><%-- "user-scalable=no" = no permitir zoom en celulares --%>
 
-    <link href="./Content/lib/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
-    <link href="./Content/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <script src="./Content/lib/bootstrap/js/bootstrap.js"></script>
+    <%-- Referencias a archivos de hojas de estilo (css) y JavaScript(js) --%>
+    <link href="./Content/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="./Content/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
-    <title>Principal</title>
+    <link href="./Content/css/cssPropios.css" rel="stylesheet" />
+
+    <link href="./Content/lib/bootstrap/less/scaffolding.less" rel="stylesheet" />
+
+    <%-- Nombre que aparecera en la barra de pestaña del navegador --%>
+    <title>Limar Helados</title>
+
+    <%-- Header --%>
     <asp:ContentPlaceHolder ID="head" runat="server">
 
     </asp:ContentPlaceHolder>
 </head>
+
+<%-- Inicio del cuerpo principal de todos los formularios que utilicen esta MasterPage --%>
 <body>
-    <form id="form1" runat="server">
+    <form id="frmPrincipal" runat="server" class="form-horizontal">
     <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
+
+        <%-- Menu de Bootstrap --%>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Heladerias Limar</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#" runat="server">Inicio</a></li>
+                        <li><a href="/SolicitudesFranquicia/FrmSolicitudesFranquicia_Alta.aspx">Franquicias</a></li>
+                        <li><a href="/Proveedores/FrmProveedores_Alta.aspx">Proveedores</a></li>
+                        <li><a href="/Productos/FrmProductos_Alta.aspx">Productos</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav><%-- Fin Menu --%>
+
+        <%-- Declaramos un HiddenField de asp para mantener el estado del menu actual en el servidor --%>
+        <asp:HiddenField runat="server" ID="tabActivo" />
+
+        <%-- Contenedor Principal --%>
+        <div class="container" >
+
+            <%-- Content --%>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+
+        </div>
+
     </div>
     </form>
 </body>
+
+    <%-- Cargamos los archivos js al final para lograr mejor rendimiento --%>
+    <script src="./Content/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script>
+        $(".nav a").on("click", function () {
+            $(".nav").find(".active").removeClass("active");
+            $(this).parent().addClass("active");
+            $("tabActivo")
+        });
+    </script>
+
 </html>

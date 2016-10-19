@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data;
 using ProyectoPAV2.DAL;
 using ProyectoPAV2.Entidades;
 
-using System.Data;
-
-namespace BL
+namespace ProyectoPAV2.BL
 {
     public class TipoDocumentoBL
     {

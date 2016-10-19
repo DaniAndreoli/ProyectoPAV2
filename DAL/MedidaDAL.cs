@@ -11,7 +11,7 @@ using ProyectoPAV2.Entidades;
 
 namespace ProyectoPAV2.DAL
 {
-    class MedidaDAL : BaseDAL 
+    public class MedidaDAL : BaseDAL 
     {
 
         /// <summary>
@@ -20,8 +20,8 @@ namespace ProyectoPAV2.DAL
         /// <returns></returns>
         public MedidasCollection getMedidas()
         {
-            SqlCommand cmd = new SqlCommand("PACK_MEDIDAS.PR_MEDIDAS_C", getConexion());
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM T_MEDIDAS", getConexion());
+            cmd.CommandType = CommandType.Text;
 
             try
             {
@@ -33,7 +33,7 @@ namespace ProyectoPAV2.DAL
                 while (dr.Read())
                 {
                     objMedida = new Medida(
-                        dr.GetInt16(0),
+                        dr.GetInt32(0),
                         dr.GetString(1));
 
                     lsMedidas.Add(objMedida);

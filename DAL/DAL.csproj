@@ -58,6 +58,7 @@
     <Compile Include="ProveedorDAL.cs" />
     <Compile Include="SolicitudFranquiciaDAL.cs" />
     <Compile Include="TipoDocumentoDAL.cs" />
+    <Compile Include="TipoProductoDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
   </ItemGroup>
   <ItemGroup>

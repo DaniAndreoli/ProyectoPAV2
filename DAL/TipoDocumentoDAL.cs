@@ -26,15 +26,16 @@ namespace ProyectoPAV2.DAL
             try
             {
                 SqlDataReader dr = cmd.ExecuteReader();
+                TipoDocumento objTipoDocumento = null;
 
                 TiposDocumentoCollection tiposDocumento = new TiposDocumentoCollection();
                 while (dr.Read())
                 {
-                    TipoDocumento tipoDocumento = new TipoDocumento(
+                    objTipoDocumento = new TipoDocumento(
                         dr.GetInt32(0),
                         dr.GetString(1));
 
-                    tiposDocumento.Add(tipoDocumento);
+                    tiposDocumento.Add(objTipoDocumento);
                 }
 
                 cmd.Connection.Close();
