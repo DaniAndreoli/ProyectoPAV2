@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using ProyectoPAV2.DAL;
 using ProyectoPAV2.Entidades;
 
-namespace BL
+namespace ProyectoPAV2.BL
 {
     public class ClienteBL
     {
@@ -17,5 +17,13 @@ namespace BL
             ClienteDAL clienteDAL = new ClienteDAL();
             return clienteDAL.getClientes();
         }
+
+        public static int insertarCliente(Cliente c)
+        {
+            ClienteDAL clienteDal = new ClienteDAL();
+
+            return clienteDal.insertarCliente(c);
+        }
+
     }
 }

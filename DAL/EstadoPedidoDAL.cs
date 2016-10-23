@@ -10,7 +10,7 @@ using ProyectoPAV2.Entidades;
 
 namespace ProyectoPAV2.DAL
 {
-    class EstadoPedidoDAL : BaseDAL
+    public  class EstadoPedidoDAL : BaseDAL
     {
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Bbjeto EstadoPedido</returns>
         public EstadoPedido getEstadoPorID(int idEstado)
         {
-            SqlCommand cmd = new SqlCommand("PK_ESTADOS_PEDIDO.PR_ESTADOS_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_ESTADOS_POR_ID", getConexion());
             cmd.CommandType = CommandType.StoredProcedure;
 
             try

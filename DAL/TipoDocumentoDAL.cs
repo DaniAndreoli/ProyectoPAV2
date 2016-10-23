@@ -57,7 +57,7 @@ namespace ProyectoPAV2.DAL
         /// <returns></returns>
         public TipoDocumento getTipoDocumentoPorID(int idTipoDocumento)
         {
-            SqlCommand cmd = new SqlCommand("PACK_TIPOS_DOCUMENTO.PR_TIPO_DOCUMENTO_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_TIPOS_DOCUMENTO_POR_ID", getConexion());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@id_tipo_documento", idTipoDocumento);
@@ -69,7 +69,7 @@ namespace ProyectoPAV2.DAL
             if(dr.Read())
             {
                 objTipoDocumento = new TipoDocumento(
-                    dr.GetInt16(0),
+                    dr.GetInt32(0),
                     dr.GetString(1));
             }
 

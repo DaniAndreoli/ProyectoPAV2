@@ -32,5 +32,11 @@ namespace ProyectoPAV2.BL
 
             return dt;
         }
+
+        public static Medida getMediaPorID(int idMedida)
+        {
+            MedidaDAL medidaDAL = new MedidaDAL();
+            return medidaDAL.getMedidaPorID(idMedida);
+        }
     }
 }

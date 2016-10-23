@@ -32,5 +32,11 @@ namespace ProyectoPAV2.BL
 
             return dt;
         }
+
+        public static TipoDocumento getTipoDocumentoPorId(int n)
+        {
+            TipoDocumentoDAL tipoDocumentoDal = new TipoDocumentoDAL();
+            return tipoDocumentoDal.getTipoDocumentoPorID(n);
+        }
     }
 }

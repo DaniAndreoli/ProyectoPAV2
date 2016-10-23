@@ -19,7 +19,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Coleccion de tipo Generics con objetos de la clase Pedido</returns>
         public PedidosCollection getPedidos()
         {
-            SqlCommand cmd = new SqlCommand("PK_PEDIDOS.PR_PEDIDOS_C", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_PEDIDOS_C", getConexion());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             try
@@ -62,7 +62,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Objeto Pedido</returns>
         public Pedido getPedidoPorID(int idPedido)
         {
-            SqlCommand cmd = new SqlCommand("PK_PEDIDOS.PR_PEDIDOS_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_PEDIDOS_POR_ID", getConexion());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             try

@@ -12,3 +12,5 @@ C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\
 C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\DAL\bin\Debug\DAL.pdb
 C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\DAL\bin\Debug\Entidades.dll
 C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\DAL\bin\Debug\Entidades.pdb
+C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\DAL\bin\Debug\Excepciones.dll
+C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\DAL\bin\Debug\Excepciones.pdb

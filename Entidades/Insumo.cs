@@ -28,7 +28,24 @@ namespace ProyectoPAV2.Entidades
             this.Stock = 0;
         }
 
-        //Constructor con Parametros
+        //Constructor con Parametros para Insert
+        public Insumo(string nombreInsumo, Medida medida)
+        {
+            this.NombreInsumo = nombreInsumo;
+            this.Medida = medida;
+            this.Stock = stock;
+        }
+
+        //Constructor con Parametros para insert de detalles producto
+        public Insumo(int idInsumo, string nombreInsumo, Medida medida)
+        {
+            this.IdInsumo = idInsumo;
+            this.NombreInsumo = nombreInsumo;
+            this.Medida = medida;
+            this.Stock = 0;
+        }
+
+        //Constructor con Parametros para select general
         public Insumo(int idInsumo, string nombreInsumo, Medida medida, int stock)
         {
             this.IdInsumo = idInsumo;

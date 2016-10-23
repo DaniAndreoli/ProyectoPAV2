@@ -57,10 +57,10 @@ namespace ProyectoPAV2.DAL
         /// <returns></returns>
         public Medida getMedidaPorID(int idMedida)
         {
-            SqlCommand cmd = new SqlCommand("PACK_MEDIDAS.PR_MEDIDAS_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_MEDIDAS_POR_ID", getConexion());
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@p_id_medida", idMedida);
+            cmd.Parameters.AddWithValue("@id_medida", idMedida);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
@@ -69,7 +69,7 @@ namespace ProyectoPAV2.DAL
             if(dr.Read())
             {
                 objMedida = new Medida(
-                    dr.GetInt16(0),
+                    dr.GetInt32(0),
                     dr.GetString(1));
             }
 

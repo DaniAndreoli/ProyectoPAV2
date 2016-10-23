@@ -32,5 +32,11 @@ namespace ProyectoPAV2.BL
 
             return dt;
         }
+
+        public static TipoProducto getTipoProductoPorID(int n)
+        {
+            TipoProductoDAL tipoProductoDal = new TipoProductoDAL();
+            return tipoProductoDal.getTipoProductoPorID(n);
+        }
     }
 }

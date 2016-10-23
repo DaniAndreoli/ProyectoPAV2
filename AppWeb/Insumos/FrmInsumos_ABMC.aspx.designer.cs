@@ -22,6 +22,15 @@ namespace ProyectoPAV2.AppWeb.Insumos {
         protected global::System.Web.UI.WebControls.TextBox txtNombreInsumo;
         
         /// <summary>
+        /// validNombreInsumo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validNombreInsumo;
+        
+        /// <summary>
         /// ddlMedidas control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace ProyectoPAV2.AppWeb.Insumos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMedidas;
+        
+        /// <summary>
+        /// validMedida control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validMedida;
         
         /// <summary>
         /// btnGuardar control.
@@ -47,5 +65,26 @@ namespace ProyectoPAV2.AppWeb.Insumos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// gvInsumos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvInsumos;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new ProyectoPAV2.AppWeb.AppWeb Master {
+            get {
+                return ((ProyectoPAV2.AppWeb.AppWeb)(base.Master));
+            }
+        }
     }
 }

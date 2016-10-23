@@ -20,7 +20,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Coleccion de tipo Generics con objetos de la clase Cliente</returns>
         public ClientesCollection getClientes()
         {
-            SqlCommand cmd = new SqlCommand("PK_CLIENTES.PR_CLIENTES_C", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_CLIENTES_C", getConexion());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             try
@@ -41,8 +41,8 @@ namespace ProyectoPAV2.DAL
                         dr.GetInt64(5),
                         DBHelper.getDomicilioPorID(dr.GetInt16(6)),
                         dr.GetString(7),
-                        DBHelper.getUsuarioPorID(dr.GetInt16(8)),
-                        DBHelper.getFranquiciasPorCliente(dr.GetInt16(9))
+                        DBHelper.getUsuarioPorID(dr.GetInt16(8))
+                      
                         );
 
                     lsClientes.Add(objCliente);               
@@ -66,7 +66,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Objeto Cliente</returns>
         public Cliente getClientePorID(int idCliente)
         {
-            SqlCommand cmd = new SqlCommand("PK_CLIENTES.PR_CLIENTES_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_CLIENTES_POR_ID", getConexion());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             try
@@ -88,8 +88,8 @@ namespace ProyectoPAV2.DAL
                         dr.GetInt64(5),
                         DBHelper.getDomicilioPorID(dr.GetInt16(6)),
                         dr.GetString(7),
-                        DBHelper.getUsuarioPorID(dr.GetInt16(8)),
-                        DBHelper.getFranquiciasPorCliente(dr.GetInt16(9))
+                        DBHelper.getUsuarioPorID(dr.GetInt16(8))
+   
                         );
                 }
 
@@ -113,43 +113,40 @@ namespace ProyectoPAV2.DAL
         /// <returns></returns>
         public int insertarCliente(Cliente cliente)
         {
-            SqlCommand cmd = new SqlCommand("PACK_CLIENTES.PR_CLIENTES_A", getConexion());
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
+            //BeginTransaction();
             try
             {
-                SqlParameter paramId = cmd.Parameters.Add("@p_id_cliente", SqlDbType.Int, 4);
-                paramId.Direction = ParameterDirection.Output;
-
-                cmd.Parameters.AddWithValue("@p_nombre", cliente.Nombre);
-                cmd.Parameters.AddWithValue("@p_apellido", cliente.Apellido);
-                cmd.Parameters.AddWithValue("@p_nro_documento", cliente.NroDocumento);
-                cmd.Parameters.AddWithValue("@p_id_tipo_documento", cliente.TipoDocumento.IdTipoDocumento);
-                cmd.Parameters.AddWithValue("@p_telefono", cliente.Telefono);
-                cmd.Parameters.AddWithValue("@p_id_domicilio", cliente.Domicilio.IdDomicilio);
-                cmd.Parameters.AddWithValue("@p_e_mail", cliente.EMail);
-                cmd.Parameters.AddWithValue("@p_id_usuario", cliente.Usuario.IdUsuario);
-
-                //Comenzamos la transaccion de Insertar un Cliente con su Domicilio
-                cmd.Connection.BeginTransaction();
-
                 //Almacenamos el objeto Domicilio del Cliente en la base de datos
                 DomicilioDAL domicilioDAL = new DomicilioDAL();
-                domicilioDAL.insertarDomicilio(cliente.Domicilio);
+                int idDomicilio = domicilioDAL.insertarDomicilio(cliente.Domicilio);
+
+                SqlCommand cmd = new SqlCommand("PR_CLIENTES_A", getConexion(), Transaccion);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlParameter pr = new SqlParameter("@id_cliente", SqlDbType.Int, 4);
+                pr.Direction = ParameterDirection.Output;
+
+                cmd.Parameters.Add(pr);
+
+                cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                cmd.Parameters.AddWithValue("@apellido", cliente.Apellido);
+                cmd.Parameters.AddWithValue("@nro_documento", cliente.NroDocumento);
+                cmd.Parameters.AddWithValue("@id_tipo_documento", cliente.TipoDocumento.IdTipoDocumento);
+                cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
+                cmd.Parameters.AddWithValue("@id_domicilio", idDomicilio);
+                cmd.Parameters.AddWithValue("@e_mail", cliente.EMail);
 
                 //Almacenamos el objeto Cliente
                 cmd.ExecuteNonQuery();
 
                 //Realizamos un Commit de la Transaccion y luego cerramos la conexion
-                cmd.Transaction.Commit();
-                cmd.Connection.Close();
+                //Commit();
 
-                return Convert.ToInt16(paramId.Value);
+                return Convert.ToInt32(pr.Value);
             }
             catch (Exception e)
             {
-                cmd.Transaction.Rollback();
-                cmd.Connection.Close();
+                //Rollback();
                 throw e;
             }
         }
@@ -163,7 +160,7 @@ namespace ProyectoPAV2.DAL
         {
             bool resultado = false;
 
-            SqlCommand cmd = new SqlCommand("PACK_CLIENTES.PR_CLIENTES_B", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_CLIENTES_B", getConexion());
             cmd.CommandType = CommandType.StoredProcedure;
 
             try
@@ -194,7 +191,7 @@ namespace ProyectoPAV2.DAL
         {
             bool resultado = false;
 
-            SqlCommand cmd = new SqlCommand("PACK_CLIENTES.PR_CLIENTES_M");
+            SqlCommand cmd = new SqlCommand("PR_CLIENTES_M");
             cmd.CommandType = CommandType.StoredProcedure;
 
             try

@@ -70,3 +70,5 @@ C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\
 C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\AppWeb\bin\BL.pdb
 C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\AppWeb\bin\Entidades.pdb
 C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\AppWeb\bin\DAL.pdb
+C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\AppWeb\bin\Excepciones.dll
+C:\Users\Dani_\Desktop\Facu\Pav2\Proyecto Pav2\VisualStudioProject\ProyectoPAV2\AppWeb\bin\Excepciones.pdb

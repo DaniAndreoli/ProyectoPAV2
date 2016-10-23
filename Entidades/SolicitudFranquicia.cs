@@ -40,6 +40,14 @@ namespace ProyectoPAV2.Entidades
             this.FechaAprobacion = fechaAprobacion;
         }
 
+        public SolicitudFranquicia(Cliente cliente, EstadoSolicitud estadoSolicitud)
+        {
+
+            this.Cliente = cliente;
+            this.EstadoSolicitud = estadoSolicitud;
+
+        }
+
         #endregion
 
         #region Properties

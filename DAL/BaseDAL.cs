@@ -13,34 +13,75 @@ namespace ProyectoPAV2.DAL
 {
     public class BaseDAL
     {
+        private static string connectionString = @"Data Source=DESKTOP-GP03IIR\SQLEXPRESS;Initial Catalog=ProyectoPAV2_DB;Integrated Security=True";
         private SqlConnection conexion;
+        private SqlTransaction transaccion;
+
+        public SqlTransaction Transaccion
+        {
+            get
+            {
+                return transaccion;
+            }
+
+            set
+            {
+                transaccion = value;
+            }
+        }
 
         /// <summary>
         /// Metodo que permite abrir la conexion con la base de datos especificada en el objeto ConnectionString para poder ejecutar una consulta
         /// Tener en cuenta que luego la conexion debe ser cerrada
         /// </summary>
         /// <returns>Objeto de tipo SqlConnection</returns>
-        protected SqlConnection getConexion()
+        public SqlConnection getConexion()
         {
             // TODO: Poner la cadena de conexión en un archivo de configuracion
-            string connectionString = @"Data Source=DESKTOP-GP03IIR\SQLEXPRESS;Initial Catalog=ProyectoPAV2_DB;Integrated Security=True";
+            if(this.conexion == null || conexion.State == System.Data.ConnectionState.Closed)
+                AbrirConexion();
+            return conexion;
+        }
 
-            if (this.conexion != null)
+        public void AbrirConexion()
+        {
+            if (conexion != null)
             {
-                if (this.conexion.State == System.Data.ConnectionState.Open)
-                    return this.conexion;
+                if (conexion.State == System.Data.ConnectionState.Open)
+                    return;
                 else
                 {
-                    this.conexion.Open();
+                    conexion.Open();
                 }
             }
             else
             {
-                this.conexion = new SqlConnection(connectionString);
-                this.conexion.Open();
+                conexion = new SqlConnection(connectionString);
+                conexion.Open();
             }
-            
-            return this.conexion;
+        }
+
+        public void BeginTransaction()
+        {
+            AbrirConexion();
+            Transaccion = conexion.BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            Transaccion.Commit();
+            CerrarConexion();
+        }
+
+        public void Rollback()
+        {
+            Transaccion.Rollback();
+            CerrarConexion();
+        }
+
+        public void CerrarConexion()
+        {
+            conexion.Close();
         }
     }
 }

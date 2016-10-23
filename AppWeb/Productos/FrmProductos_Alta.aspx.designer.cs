@@ -13,6 +13,33 @@ namespace ProyectoPAV2.AppWeb.Productos {
     public partial class FrmProductos_Alta {
         
         /// <summary>
+        /// msgError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgError;
+        
+        /// <summary>
+        /// msgInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgInfo;
+        
+        /// <summary>
+        /// msgExito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgExito;
+        
+        /// <summary>
         /// txtNombreProducto control.
         /// </summary>
         /// <remarks>
@@ -20,6 +47,15 @@ namespace ProyectoPAV2.AppWeb.Productos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombreProducto;
+        
+        /// <summary>
+        /// validNombreProducto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validNombreProducto;
         
         /// <summary>
         /// ddlTiposProducto control.
@@ -31,6 +67,15 @@ namespace ProyectoPAV2.AppWeb.Productos {
         protected global::System.Web.UI.WebControls.DropDownList ddlTiposProducto;
         
         /// <summary>
+        /// validTipoProducto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validTipoProducto;
+        
+        /// <summary>
         /// txtPrecioUnitario control.
         /// </summary>
         /// <remarks>
@@ -38,6 +83,33 @@ namespace ProyectoPAV2.AppWeb.Productos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrecioUnitario;
+        
+        /// <summary>
+        /// validPrecioProducto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validPrecioProducto;
+        
+        /// <summary>
+        /// gvInsumos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvInsumos;
+        
+        /// <summary>
+        /// validCheckDetalles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator validCheckDetalles;
         
         /// <summary>
         /// btnGuardar control.
@@ -56,5 +128,14 @@ namespace ProyectoPAV2.AppWeb.Productos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// gvProductos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvProductos;
     }
 }

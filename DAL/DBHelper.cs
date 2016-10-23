@@ -247,5 +247,12 @@ namespace ProyectoPAV2.DAL
 
             return detalleCompraProveedorDAL.getDetallesCompraProveedor(idCompra);
         }
+
+        public static TipoProducto getTipoProductoPorID(int idTipoProducto)
+        {
+            TipoProductoDAL tipoProductoDAL = new TipoProductoDAL();
+
+            return tipoProductoDAL.getTipoProductoPorID(idTipoProducto);
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Objeto Domicilio</returns>
         public Domicilio getDomicilioPorID(int idDomicilio)
         {
-            SqlCommand cmd = new SqlCommand("PACK_DOMICILIOS.PR_DOMICILIOS_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_DOMICILIOS_POR_ID", getConexion(),Transaccion);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@id_domicilio", idDomicilio);
@@ -54,29 +54,34 @@ namespace ProyectoPAV2.DAL
         /// <returns>Id del Domicilio insertado</returns>
         public int insertarDomicilio(Domicilio domicilio)
         {
-            SqlCommand cmd = new SqlCommand("PACK_DOMICILIOS.PR_DOMICILIOS_A", getConexion());
+            //BeginTransaction();
+
+            SqlCommand cmd = new SqlCommand("PR_DOMICILIOS_A", getConexion(), Transaccion);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            SqlParameter pr = new SqlParameter("@id_domicilio", SqlDbType.Int, 4);
+            pr.Direction = ParameterDirection.Output;
+
+            cmd.Parameters.Add(pr);
+
+            cmd.Parameters.AddWithValue("@id_localidad", domicilio.Localidad.IdLocalidad);
+            cmd.Parameters.AddWithValue("@numero", domicilio.Numero);
+            cmd.Parameters.AddWithValue("@piso", domicilio.Piso);
+            cmd.Parameters.AddWithValue("@dpto", domicilio.Dpto);
+            cmd.Parameters.AddWithValue("@barrio", domicilio.Barrio);
+            cmd.Parameters.AddWithValue("@calle", domicilio.Calle);
 
             try
             {
-                SqlParameter paramId = cmd.Parameters.Add("@p_id_domicilio", SqlDbType.Int, 4);
-                paramId.Direction = ParameterDirection.Output;
-
-                cmd.Parameters.AddWithValue("@p_id_localidad", domicilio.Localidad.IdLocalidad);
-                cmd.Parameters.AddWithValue("@p_numero", domicilio.Numero);
-                cmd.Parameters.AddWithValue("@p_piso", domicilio.Piso);
-                cmd.Parameters.AddWithValue("@p_dpto", domicilio.Dpto);
-                cmd.Parameters.AddWithValue("@p_barrio", domicilio.Barrio);
-                cmd.Parameters.AddWithValue("@p_calle", domicilio.Calle);
-
                 cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
 
-                return Convert.ToInt16(paramId.Value);
+                //Commit();
+
+                return Convert.ToInt32(pr.Value);
             }
             catch (Exception e)
             {
-                cmd.Connection.Close();
+                //Rollback();
                 throw e;
             }
         }
@@ -88,7 +93,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Valor bool que indica si la modificacion se realizo correctamente</returns>
         public bool modificarDomicilio(Domicilio domicilio)
         {
-            SqlCommand cmd = new SqlCommand("PACK_DOMICILIOS.PR_DOMICILIOS_M", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_DOMICILIOS_M", getConexion());
             cmd.CommandType = CommandType.StoredProcedure;
 
             try

@@ -10,7 +10,7 @@ using ProyectoPAV2.Entidades;
 
 namespace ProyectoPAV2.DAL
 {
-    class LocalidadDAL : BaseDAL
+    public class LocalidadDAL : BaseDAL
     {
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace ProyectoPAV2.DAL
         /// <returns></returns>
         public LocalidadesCollection getLocalidades()
         {
-            SqlCommand cmd = new SqlCommand("PACK_LOCALIDADES.PR_LOCALIDADES_C", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_LOCALIDADES_C", getConexion());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             try
@@ -32,9 +32,9 @@ namespace ProyectoPAV2.DAL
                 while (dr.Read())
                 {
                     objLocalidad = new Localidad(
-                        dr.GetInt16(0),
-                        dr.GetInt16(1),
-                        dr.GetString(2));
+                        dr.GetInt32(0),
+                        dr.GetInt32(2),
+                        dr.GetString(1));
 
                     lsLocalidades.Add(objLocalidad);
                 }
@@ -60,7 +60,7 @@ namespace ProyectoPAV2.DAL
         /// <returns></returns>
         public Localidad getLocalidadPorID(int idLocalidad)
         {
-            SqlCommand cmd = new SqlCommand("PACK_LOCALIDADES.PR_LOCALIDAD_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_LOCALIDADES_POR_ID", getConexion());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@id_localidad", idLocalidad);
@@ -71,8 +71,8 @@ namespace ProyectoPAV2.DAL
             if (dr.Read())
             {
                 objLocalidad = new Localidad(
-                    dr.GetInt16(0),
-                    dr.GetInt16(1),
+                    dr.GetInt32(0),
+                    dr.GetInt32(1),
                     dr.GetString(2));
             }
 

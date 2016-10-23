@@ -15,6 +15,7 @@ namespace ProyectoPAV2.Entidades
         private TipoProducto tipoProducto;
         private double precioUnitario;
         private int stock;
+        private DetallesProductoCollection lsDetalles;
 
         #endregion
 
@@ -28,6 +29,7 @@ namespace ProyectoPAV2.Entidades
             this.TipoProducto = null;
             this.PrecioUnitario = 0;
             this.Stock = 0;
+            this.LsDetalles = new DetallesProductoCollection();
         }
 
         //Constructor con Parametros
@@ -38,6 +40,7 @@ namespace ProyectoPAV2.Entidades
             this.TipoProducto = tipoProducto;
             this.PrecioUnitario = precioUnitario;
             this.Stock = stock;
+            this.LsDetalles = new DetallesProductoCollection();
         }
 
         #endregion
@@ -106,6 +109,19 @@ namespace ProyectoPAV2.Entidades
             set
             {
                 stock = value;
+            }
+        }
+
+        public DetallesProductoCollection LsDetalles
+        {
+            get
+            {
+                return lsDetalles;
+            }
+
+            set
+            {
+                lsDetalles = value;
             }
         }
 

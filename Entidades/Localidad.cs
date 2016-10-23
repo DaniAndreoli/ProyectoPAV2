@@ -51,6 +51,32 @@ namespace ProyectoPAV2.Entidades
             }
         }
 
+        public int CodigoPostal
+        {
+            get
+            {
+                return codigoPostal;
+            }
+
+            set
+            {
+                codigoPostal = value;
+            }
+        }
+
+        public String NombreLocalidad
+        {
+            get
+            {
+                return nombreLocalidad;
+            }
+
+            set
+            {
+                nombreLocalidad = value;
+            }
+        }
+
 
         #endregion
 

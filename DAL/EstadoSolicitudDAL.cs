@@ -10,7 +10,7 @@ using ProyectoPAV2.Entidades;
 
 namespace ProyectoPAV2.DAL
 {
-    class EstadoSolicitudDAL : BaseDAL
+    public class EstadoSolicitudDAL : BaseDAL
     {
 
         /// <summary>
@@ -20,11 +20,12 @@ namespace ProyectoPAV2.DAL
         /// <returns>Bbjeto EstadoSolicitud</returns>
         public EstadoSolicitud getEstadoPorID(int idEstado)
         {
-            SqlCommand cmd = new SqlCommand("PK_ESTADOS_SOLICITUD.PR_ESTADOS_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_ESTADOS_SOLICITUD_POR_ID", getConexion());
             cmd.CommandType = CommandType.StoredProcedure;
 
             try
             {
+                cmd.Parameters.AddWithValue("@id_estado",idEstado);
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 EstadoSolicitud objEstado = null;
@@ -33,7 +34,7 @@ namespace ProyectoPAV2.DAL
                 {
                     objEstado = new EstadoSolicitud( 
 
-                        dr.GetInt16(0),
+                        dr.GetInt32(0),
                         dr.GetString(1));
                 }
 
@@ -56,7 +57,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Id del Estado insertado</returns>
         public int insertarEstado(EstadoSolicitud estadoSolicitud)
         {
-            SqlCommand cmd = new SqlCommand("PACK_ESTADOS_SOLICITUD.PR_ESTADOS_SOLICITUD_A", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_ESTADOS_SOLICITUD_A", getConexion());
             cmd.CommandType = CommandType.StoredProcedure;
 
             try

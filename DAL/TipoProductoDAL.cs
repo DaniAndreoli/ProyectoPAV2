@@ -47,5 +47,28 @@ namespace ProyectoPAV2.DAL
                 throw e;
             }
         }
+
+        public TipoProducto getTipoProductoPorID(int idTipoProducto)
+        {
+            SqlCommand cmd = new SqlCommand("PR_TIPOS_PRODUCTO_POR_ID", getConexion());
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@id_tipo_producto", idTipoProducto);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            TipoProducto objTipoProducto = null;
+
+            if (dr.Read())
+            {
+                objTipoProducto = new TipoProducto(
+                    dr.GetInt32(0),
+                    dr.GetString(1));
+            }
+
+            cmd.Connection.Close();
+
+            return objTipoProducto;
+        }
     }
 }

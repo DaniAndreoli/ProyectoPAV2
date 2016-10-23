@@ -21,7 +21,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Objeto Franquicia</returns>
         public Franquicia getFranquiciaPorID(int idFranquicia)
         {
-            SqlCommand cmd = new SqlCommand("PACK_FRANQUICIAS.PR_FRANQUICIAS_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_FRANQUICIAS_POR_ID", getConexion());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@id_franquicia", idFranquicia);
@@ -36,7 +36,8 @@ namespace ProyectoPAV2.DAL
                     dr.GetInt16(0),
                     DBHelper.getDomicilioPorID(dr.GetInt16(1)),
                     dr.GetString(2),
-                    dr.GetInt64(3));
+                    dr.GetInt64(3),
+                    DBHelper.getClientePorID(dr.GetInt32(4)));
             }
 
             cmd.Connection.Close();
@@ -52,7 +53,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Objeto FranquiciaCollection</returns>
         public FranquiciasCollection getFranquiciasPorCliente(int idCliente)
         {
-            SqlCommand cmd = new SqlCommand("PACK_FRANQUICIAS.PR_FRANQUICIAS_POR_CLIENTE", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_FRANQUICIAS_POR_CLIENTE", getConexion());
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@id_cliente", idCliente);

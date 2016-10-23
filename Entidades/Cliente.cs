@@ -19,7 +19,7 @@ namespace ProyectoPAV2.Entidades
         private Domicilio domicilio;
         private string eMail;
         private Usuario usuario;
-        private FranquiciasCollection lsFranquicias;
+ 
 
         #endregion
 
@@ -37,11 +37,11 @@ namespace ProyectoPAV2.Entidades
             this.Domicilio = null;
             this.EMail = string.Empty;
             this.Usuario = null;
-            this.LsFranquicias = null;
+
         }
 
         //Constructor con parametros
-        public Cliente(int idCliente, string nombre, string apellido, long nroDocumento, TipoDocumento tipoDocumento, long telefono, Domicilio domicilio, string eMail, Usuario usuario, FranquiciasCollection lsFranquicias)
+        public Cliente(int idCliente, string nombre, string apellido, long nroDocumento, TipoDocumento tipoDocumento, long telefono, Domicilio domicilio, string eMail, Usuario usuario)
         {
             this.IdCliente = idCliente;
             this.Nombre = nombre;
@@ -52,7 +52,33 @@ namespace ProyectoPAV2.Entidades
             this.Domicilio = domicilio;
             this.EMail = eMail;
             this.Usuario = usuario;
-            this.LsFranquicias = lsFranquicias;
+
+        }
+
+        public Cliente(string nombre, string apellido, long nroDocumento, TipoDocumento tipoDocumento, long telefono, Domicilio domicilio, string eMail, Usuario usuario)
+        { 
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.NroDocumento = nroDocumento;
+            this.TipoDocumento = tipoDocumento;
+            this.Telefono = telefono;
+            this.Domicilio = domicilio;
+            this.EMail = eMail;
+            this.Usuario = usuario;
+
+        }
+
+        public Cliente(string nombre, string apellido, long nroDocumento, TipoDocumento tipoDocumento, long telefono, Domicilio domicilio, string eMail)
+        {
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.NroDocumento = nroDocumento;
+            this.TipoDocumento = tipoDocumento;
+            this.Telefono = telefono;
+            this.Domicilio = domicilio;
+            this.EMail = eMail;
+
+
         }
 
         #endregion
@@ -176,18 +202,6 @@ namespace ProyectoPAV2.Entidades
             }
         }
 
-        public FranquiciasCollection LsFranquicias
-        {
-            get
-            {
-                return lsFranquicias;
-            }
-
-            set
-            {
-                lsFranquicias = value;
-            }
-        }
 
         #endregion
 

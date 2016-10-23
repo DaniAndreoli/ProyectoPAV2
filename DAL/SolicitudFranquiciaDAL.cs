@@ -20,7 +20,7 @@ namespace ProyectoPAV2.DAL
         /// <returns>Coleccion de tipo Generics con objetos de la clase SolicitudFranquicia</returns>
         public SolicitudesFranquiciaCollection getSolicitud()
         {
-            SqlCommand cmd = new SqlCommand("PK_SOLICITUD_FRANQUICIA.PR_SOLICITUD_FRANQUICIA_C", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_SOLICITUD_FRANQUICIA_C", getConexion());
             cmd.CommandType = CommandType.StoredProcedure;
 
             try
@@ -57,7 +57,7 @@ namespace ProyectoPAV2.DAL
 
         public SolicitudFranquicia getSolicitudPorID(int idSolicitud)
         {
-            SqlCommand cmd = new SqlCommand("PK_SOLICITUD_FRANQUICIA.PR_SOLICITUD_FRANQUICIA_POR_ID", getConexion());
+            SqlCommand cmd = new SqlCommand("PR_SOLICITUD_FRANQUICIA_POR_ID", getConexion());
             cmd.CommandType = CommandType.StoredProcedure;
 
             try
@@ -97,36 +97,37 @@ namespace ProyectoPAV2.DAL
         /// <returns></returns>
         public int insertarSolicitudFranquicia(SolicitudFranquicia solicitud)
         {
-            SqlCommand cmd = new SqlCommand("PACK_SOLICITUD_FRANQUICIA.PR_SOLICITUD_FRANQUICIA_A", getConexion());
-            cmd.CommandType = CommandType.StoredProcedure;
-
             try
             {
-                SqlParameter paramId = cmd.Parameters.Add("@id_solicitud", SqlDbType.Int, 4);
-                paramId.Direction = ParameterDirection.Output;
+                BeginTransaction();
 
-                cmd.Parameters.AddWithValue("@id_cliente", solicitud.Cliente.IdCliente);
-                cmd.Parameters.AddWithValue("@fecha_solicitud", solicitud.FechaSolicitud);
-                cmd.Parameters.AddWithValue("@fecha_aprobacion", solicitud.FechaAprobacion);
-                cmd.Parameters.AddWithValue("@id_estado", solicitud.EstadoSolicitud.IdEstado);
-
-                //Abrimos transaccion para almacenar primero el objeto cliente y luego la solicitudFranquicia
-                cmd.Connection.BeginTransaction();
                 ClienteDAL clienteDAL = new ClienteDAL();
+                int idCliente = clienteDAL.insertarCliente(solicitud.Cliente);
+                
+                SqlCommand cmd = new SqlCommand("PR_SOLICITUDES_FRANQUICIA_A", getConexion(), Transaccion);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                clienteDAL.insertarCliente(solicitud.Cliente);
+                SqlParameter pr = new SqlParameter("@id_solicitud", SqlDbType.Int, 4);
+                pr.Direction = ParameterDirection.Output;
 
+                cmd.Parameters.Add(pr);
+
+                //Declaramos objetoDAL
+                
+
+                cmd.Parameters.AddWithValue("@id_cliente", idCliente);
+
+            
+                //insertamos objeto solicitud
                 cmd.ExecuteNonQuery();
 
-                cmd.Transaction.Commit();
-                cmd.Connection.Close();
+                Commit();
 
-                return Convert.ToInt16(paramId.Value);
+                return Convert.ToInt32(pr.Value);
             }
             catch (Exception e)
             {
-                cmd.Transaction.Rollback();
-                cmd.Connection.Close();
+                Rollback();
                 throw e;
             }
             

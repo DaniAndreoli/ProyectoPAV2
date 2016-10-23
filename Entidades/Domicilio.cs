@@ -29,7 +29,7 @@ namespace ProyectoPAV2.Entidades
             this.Localidad = null;
             this.Numero = 0;
             this.Piso = null;
-            this.Dpto = string.Empty;
+            this.Dpto = null;
             this.Barrio = string.Empty;
             this.Calle = string.Empty;
         }
@@ -38,6 +38,16 @@ namespace ProyectoPAV2.Entidades
         public Domicilio(int idDomicilio, Localidad localidad, int numero, int? piso, string dpto, string barrio, string calle)
         {
             this.IdDomicilio = idDomicilio;
+            this.Localidad = localidad;
+            this.Numero = numero;
+            this.Piso = piso;
+            this.Dpto = dpto;
+            this.Barrio = barrio;
+            this.Calle = calle;
+        }
+
+        public Domicilio(Localidad localidad, int numero, int? piso, string dpto, string barrio, string calle)
+        {
             this.Localidad = localidad;
             this.Numero = numero;
             this.Piso = piso;

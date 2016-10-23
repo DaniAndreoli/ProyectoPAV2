@@ -14,6 +14,7 @@ namespace ProyectoPAV2.Entidades
         private Domicilio domicilio;
         private string razonSocial;
         private long cuit;
+        private Cliente cliente;
 
         #endregion
 
@@ -26,15 +27,29 @@ namespace ProyectoPAV2.Entidades
             this.Domicilio = null;
             this.RazonSocial = string.Empty;
             this.Cuit = 0;
+            this.cliente = null;
         }
 
-        //Constructor sin Parametros
+ 
+
+        //Constructor con Parametros
         public Franquicia(int idFranquicia, Domicilio domicilio, string razonSocial, long cuit)
         {
             this.IdFranquicia = idFranquicia;
             this.Domicilio = domicilio;
             this.RazonSocial = razonSocial;
             this.Cuit = cuit;
+            
+        }
+
+        //Constructor con Parametros
+        public Franquicia(int idFranquicia, Domicilio domicilio, string razonSocial, long cuit,Cliente cliente)
+        {
+            this.IdFranquicia = idFranquicia;
+            this.Domicilio = domicilio;
+            this.RazonSocial = razonSocial;
+            this.Cuit = cuit;
+            this.cliente = cliente;
         }
 
         #endregion
@@ -90,6 +105,19 @@ namespace ProyectoPAV2.Entidades
             set
             {
                 cuit = value;
+            }
+        }
+
+        public Cliente Cliente
+        {
+            get
+            {
+                return cliente;
+            }
+
+            set
+            {
+                cliente = value;
             }
         }
 

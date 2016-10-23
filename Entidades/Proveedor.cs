@@ -42,6 +42,15 @@ namespace ProyectoPAV2.Entidades
             this.FechaAlta = fechaAlta;
             this.FechaBaja = fechaBaja;
         }
+        public Proveedor(long cuit, string nombreProveedor, Domicilio domicilio)
+        {
+           
+            this.Cuit = cuit;
+            this.NombreProveedor = nombreProveedor;
+            this.Domicilio = domicilio;
+            
+           
+        }
 
         #endregion
 
